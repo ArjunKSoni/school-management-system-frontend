@@ -17,7 +17,7 @@ function PrincipalDashboard() {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/users', {
+      const response = await axios.get('https://school-management-system-pied-seven.vercel.app/api/users', {
         headers: { 'x-auth-token': localStorage.getItem('token') }
       });
       setUsers(response.data);
@@ -28,7 +28,7 @@ function PrincipalDashboard() {
 
   const fetchClassrooms = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/classrooms', {
+      const response = await axios.get('https://school-management-system-pied-seven.vercel.app/api/classrooms', {
         headers: { 'x-auth-token': localStorage.getItem('token') }
       });
       setClassrooms(response.data);
@@ -40,7 +40,7 @@ function PrincipalDashboard() {
   const handleCreateUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/users/register', newUser, {
+      await axios.post('https://school-management-system-pied-seven.vercel.app/api/users/register', newUser, {
         headers: { 'x-auth-token': localStorage.getItem('token') }
       });
       setNewUser({ email: '', password: '', role: 'teacher' });
@@ -53,7 +53,7 @@ function PrincipalDashboard() {
   const handleCreateClassroom = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/classrooms', newClassroom, {
+      await axios.post('https://school-management-system-pied-seven.vercel.app/api/classrooms', newClassroom, {
         headers: { 'x-auth-token': localStorage.getItem('token') }
       });
       setNewClassroom({ name: '', startTime: '', endTime: '', days: [] });
@@ -65,7 +65,7 @@ function PrincipalDashboard() {
 
   const handleAssignTeacher = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/classrooms/${selectedClassroom}/assign-teacher`, 
+      await axios.put(`https://school-management-system-pied-seven.vercel.app/api/classrooms/${selectedClassroom}/assign-teacher`, 
         { teacherId: selectedTeacher },
         { headers: { 'x-auth-token': localStorage.getItem('token') } }
       );
@@ -79,7 +79,7 @@ function PrincipalDashboard() {
 
   const handleAssignStudent = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/classrooms/${selectedClassroom}/assign-student`, 
+      await axios.put(`https://school-management-system-pied-seven.vercel.app/api/classrooms/${selectedClassroom}/assign-student`, 
         { studentId: selectedStudent },
         { headers: { 'x-auth-token': localStorage.getItem('token') } }
       );
@@ -93,7 +93,7 @@ function PrincipalDashboard() {
 
   const handleDeleteUser = async (userId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/users/${userId}`, {
+      await axios.delete(`https://school-management-system-pied-seven.vercel.app/api/users/${userId}`, {
         headers: { 'x-auth-token': localStorage.getItem('token') }
       });
       fetchUsers();
@@ -104,7 +104,7 @@ function PrincipalDashboard() {
 
   const handleDeleteClassroom = async (classroomId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/classrooms/${classroomId}`, {
+      await axios.delete(`https://school-management-system-pied-seven.vercel.app/api/classrooms/${classroomId}`, {
         headers: { 'x-auth-token': localStorage.getItem('token') }
       });
       fetchClassrooms();

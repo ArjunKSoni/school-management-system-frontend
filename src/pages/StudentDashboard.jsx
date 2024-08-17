@@ -13,7 +13,7 @@ function StudentDashboard() {
 
   const fetchClassroomAndClassmates = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/classrooms/student', {
+      const response = await axios.get('https://school-management-system-pied-seven.vercel.app/api/classrooms/student', {
         headers: { 'x-auth-token': localStorage.getItem('token') }
       });
       setClassroom(response.data.classroom);
@@ -26,7 +26,7 @@ function StudentDashboard() {
   const fetchTimetable = async () => {
     if (classroom) {
       try {
-        const response = await axios.get(`http://localhost:5000/api/timetables/classroom/${classroom._id}`, {
+        const response = await axios.get(`https://school-management-system-pied-seven.vercel.app/api/timetables/classroom/${classroom._id}`, {
           headers: { 'x-auth-token': localStorage.getItem('token') }
         });
         setTimetable(response.data.periods);

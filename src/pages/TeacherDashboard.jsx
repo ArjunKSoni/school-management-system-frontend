@@ -14,7 +14,7 @@ function TeacherDashboard() {
 
   const fetchClassroomAndStudents = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/classrooms/teacher', {
+      const response = await axios.get('https://school-management-system-pied-seven.vercel.app/api/classrooms/teacher', {
         headers: { 'x-auth-token': localStorage.getItem('token') }
       });
       setClassroom(response.data);
@@ -26,7 +26,7 @@ function TeacherDashboard() {
 
   const fetchTimetable = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/timetables/classroom/${classroom._id}`, {
+      const response = await axios.get(`https://school-management-system-pied-seven.vercel.app/api/timetables/classroom/${classroom._id}`, {
         headers: { 'x-auth-token': localStorage.getItem('token') }
       });
       setTimetable(response.data.periods);
@@ -38,7 +38,7 @@ function TeacherDashboard() {
   const handleAddPeriod = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/timetables', {
+      await axios.post('https://school-management-system-pied-seven.vercel.app/api/timetables', {
         classroom: classroom._id,
         periods: [...timetable, newPeriod]
       }, {

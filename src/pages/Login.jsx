@@ -10,7 +10,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/users/login', { email, password });
+      const response = await axios.post('https://school-management-system-pied-seven.vercel.app/api/users/login', { email, password });
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('userRole', response.data.role);
       // eslint-disable-next-line default-case
