@@ -18,7 +18,7 @@ function PrivateRoute({ element: Element, allowedRoles, ...rest }) {
 function App() {
   return (
     <Router>
-      {isAuthenticated() && <Navbar />}
+      <Navbar />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route 
